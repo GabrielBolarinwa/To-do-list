@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>To-do list</title>
+        <link rel="stylesheet" href="fontawesome6\pro\css\all.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <main class="container" id="test">
+            <h1 class="list-header">TO-DO LIST</h1>
+            <section class="task-form" aria-label="Task Form">
+                <form class="task-form-inner">
+                    <input
+                        class="task-box"
+                        id="task-box"
+                        type="text"
+                        placeholder="Enter a new task"
+                        aria-live="polite"
+                    />
+                    <button type="submit" class="button">Add task</button>
+                    <br /><br />
+                </form>
+            </section>
+            <section class="buttons" aria-label="Task Filtering Buttons">
+                <button
+                    class="button category-buttons current-button"
+                    onclick="displayAllTask(); addSelectedClass(this)"
+                >
+                    All
+                </button>
+                <button
+                    class="button category-buttons completed-button"
+                    onclick="displayCompletedTasks(); addSelectedClass(this)"
+                >
+                    Completed
+                </button>
+                <button
+                    class="button category-buttons pending-button"
+                    onclick="displayPendingTasks(); addSelectedClass(this)"
+                >
+                    Pending
+                </button>
+            </section>
+            <section class="tasks" id="tasks" aria-live="polite"></section>
+        </main>
+        <script src="js\script.js"></script>
+    </body>
+</html>
