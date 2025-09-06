@@ -13,6 +13,7 @@ class TaskManager {
     constructor() {
         this.tasks = [];
         this.count = 0;
+        this.editing = false;
         this.filter = "all";
         this.loadTasksFromStorage();
     }
@@ -167,7 +168,8 @@ class TaskManager {
             let editBtn = document.createElement("button");
             editBtn.classList.add("task-buttons", "edit-btn");
             editBtn.onclick = () => {
-                if (editBtn.textContent === "Edit Task") {
+                this.editing = !this.editing;
+                if (this.editing) {
                     const editInput = document.createElement("input");
                     editInput.type = "text";
                     editInput.value = task.label;
