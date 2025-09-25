@@ -1,4 +1,5 @@
-const tasks = document.getElementById("tasks");
+const tasks =
+    document.getElementById("tasks") || document.createElement("section");
 class Task {
     constructor(id, label, completed = false, dueDate = null) {
         this.id = id;
@@ -204,24 +205,32 @@ class TaskManager {
         });
     }
 }
-const taskbox = document.getElementById("task-box");
+const taskbox =
+    document.getElementById("task-box") || document.createElement("input");
 let taskInput;
 taskbox.addEventListener("input", () => {
     taskInput = taskbox.value;
 });
 const categoryButtons = document.querySelectorAll(".category-buttons");
-console.log(categoryButtons);
 const taskManager = new TaskManager();
-document.querySelector(".task-form-inner").addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (taskInput === "" || taskInput === undefined || taskInput === null) {
-        alert("Please enter a Task in the input box below");
-    } else {
-        taskManager.addTask(taskInput);
-        taskbox.value = "";
-        taskInput = "";
-    }
-});
+if (document.querySelector(".task-form-inner")) {
+    document
+        .querySelector(".task-form-inner")
+        .addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (
+                taskInput === "" ||
+                taskInput === undefined ||
+                taskInput === null
+            ) {
+                alert("Please enter a Task in the input box below");
+            } else {
+                taskManager.addTask(taskInput);
+                taskbox.value = "";
+                taskInput = "";
+            }
+        });
+}
 
 function displayAllTask() {
     taskManager.displayAllTask();
